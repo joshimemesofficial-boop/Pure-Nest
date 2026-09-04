@@ -3,42 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PureNest</title>
+<title>PureNest Cosmetics</title>
+
 <style>
-body{font-family:Arial;margin:0;background:#f0fff4}
-header{background:#1b8a3d;color:white;padding:15px;text-align:center}
-.hero{padding:30px;text-align:center;background:#35b65d;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;padding:15px}
-.card{background:white;padding:15px;border-radius:12px;box-shadow:0 2px 6px #ccc;text-align:center}
-button{background:#1b8a3d;color:white;border:none;padding:10px;border-radius:8px;width:100%}
-footer{background:#1b8a3d;color:white;text-align:center;padding:15px;margin-top:20px}
+body{margin:0;font-family:Arial;background:#FFFDF4;}
+header{background:#FFD54F;padding:15px;}
+.logo{font-size:28px;font-weight:bold;color:#1B5E20;}
+.search{background:white;padding:10px;border-radius:20px;margin-top:10px;}
+.banner{background:#1B5E20;color:white;padding:12px;text-align:center;font-weight:bold;}
+.products{padding:15px;}
+.card{background:white;border:1px solid #ddd;border-radius:12px;padding:15px;margin-bottom:15px;}
+.buy{background:#E53935;color:white;padding:10px;border:none;border-radius:8px;width:100%;margin-top:8px;}
+.cart{background:#FF9800;color:white;padding:10px;border:none;border-radius:8px;width:100%;margin-top:8px;}
+.hidden{display:none;}
+footer{position:fixed;bottom:0;width:100%;background:#FFD54F;display:flex;justify-content:space-around;padding:10px;font-weight:bold;}
 </style>
 </head>
+
 <body>
-<header><h1>🌿 PureNest</h1></header>
-<div class="hero">
-<h2>Eat Healthy • Live Beautifully</h2>
-<p>Fresh Fruits | Healthy Oats | Natural Cosmetics</p>
+
+<header>
+<div class="logo">🌿 PureNest</div>
+<div>📍 Delivery by Tomorrow</div>
+<div class="search">🔍 Search cosmetics...</div>
+</header>
+
+<div class="banner">
+💚 PURE CHOICES • PURE YOU
 </div>
 
-<h2 style="padding-left:15px;color:#1b8a3d">Shop</h2>
-<div class="grid">
-<div class="card"><h3>🍎 Apple</h3><p>₹120/kg</p><button>Add to Cart</button></div>
-<div class="card"><h3>🍌 Banana</h3><p>₹60/dozen</p><button>Add to Cart</button></div>
-<div class="card"><h3>🥣 Rolled Oats</h3><p>₹199</p><button>Add to Cart</button></div>
-<div class="card"><h3>🧴 Aloe Vera Gel</h3><p>₹180</p><button>Add to Cart</button></div>
-<div class="card"><h3>💄 Lip Balm</h3><p>₹99</p><button>Add to Cart</button></div>
-<div class="card"><h3>🧼 Face Wash</h3><p>₹249</p><button>Add to Cart</button></div>
+<div class="products">
+<h2 style="color:#1B5E20;">Cosmetics</h2>
+
+<p>No products available yet. Products will be added by PureNest Admin.</p>
+
 </div>
 
-<section style="padding:15px">
-<h2 style="color:#1b8a3d">About Us</h2>
-<p>PureNest is your trusted online store for healthy food and natural beauty products.</p>
-<h2 style="color:#1b8a3d">Contact</h2>
-<p>WhatsApp: +91 98765 43210</p>
-<p>Email: support@purenest.in</p>
-</section>
+<div id="details" class="hidden card">
+<h2 id="pname"></h2>
 
-<footer>© 2026 PureNest. All Rights Reserved.</footer>
+<img id="pimage" src="" width="100%" style="border-radius:10px;">
+
+<p id="pinfo"></p>
+
+<h3>Related Items</h3>
+<ul>
+<li>Moisturizer</li>
+<li>Face Serum</li>
+<li>Lip Balm</li>
+</ul>
+
+<button class="buy">Buy Now</button>
+<button class="cart">Add to Cart</button>
+
+</div>
+
+<footer>
+<div>🏠 Home</div>
+<div>📦 Orders</div>
+<div>❤️ Wishlist</div>
+<div>👤 Profile</div>
+</footer>
+
 </body>
 </html>
