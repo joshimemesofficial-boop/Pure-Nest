@@ -100,47 +100,84 @@
 </footer>
 
 <script>
-const pages=["login","signup","home","cart","wishlist","orders","profile"];
+// All website pages
+const pages = ["login","signup","home","product","cart","wishlist","orders","profile"];
 
+// Show page
 function showPage(page){
-  pages.forEach(p=>document.getElementById(p).style.display="none");
-  document.getElementById(page).style.display="block";
+  pages.forEach(function(p){
+    let el = document.getElementById(p);
+    if(el) el.style.display = "none";
+  });
+
+  let current = document.getElementById(page);
+  if(current) current.style.display = "block";
 }
 
+// Create Account
 function createAccount(){
-  localStorage.setItem("name",signupName.value);
-  localStorage.setItem("phone",signupPhone.value);
-  localStorage.setItem("address",signupAddress.value);
-  localStorage.setItem("password",signupPassword.value);
-  alert("Account Created Successfully!");
+  const name = document.getElementById("signupName").value.trim();
+  const phone = document.getElementById("signupPhone").value.trim();
+  const address = document.getElementById("signupAddress").value.trim();
+  const password = document.getElementById("signupPassword").value.trim();
+
+  if(!name || !phone || !address || !password){
+    alert("Please fill all details.");
+    return;
+  }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("phone", phone);
+  localStorage.setItem("address", address);
+  localStorage.setItem("password", password);
+
+  alert("✅ Account Created Successfully!");
   showPage("login");
 }
 
+// Login
 function loginUser(){
-  if(loginName.value===localStorage.getItem("name") &&
-     loginPhone.value===localStorage.getItem("phone") &&
-     loginPassword.value===localStorage.getItem("password")){
-       profileBox.innerHTML=`<b>Name:</b> ${localStorage.getItem("name")}<br><b>Phone:</b> ${localStorage.getItem("phone")}<br><b>Address:</b> ${localStorage.getItem("address")}`;
-       alert("Login Successful!");
-       showPage("home");
-  }else{
-       alert("Wrong details. Sign up first.");
+  const name = document.getElementById("loginName").value.trim();
+  const phone = document.getElementById("loginPhone").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
+
+  if(
+    name === localStorage.getItem("name") &&
+    phone === localStorage.getItem("phone") &&
+    password === localStorage.getItem("password")
+  ){
+    document.getElementById("profileBox").innerHTML =
+      "<b>Name:</b> " + name +
+      "<br><b>Phone:</b> " + phone +
+      "<br><b>Address:</b> " + localStorage.getItem("address");
+
+    alert("✅ Login Successful!");
+    showPage("home");
+  } else {
+    alert("❌ Wrong details or account not created.");
   }
 }
 
+// Cart
 function addCart(){
-  cartBox.innerHTML="Lipstick - ₹299 added to cart.";
+  document.getElementById("cartBox").innerHTML =
+    "🛒 Lipstick - ₹299 added to your cart.";
   alert("Added to Cart!");
+  showPage("cart");
 }
 
+// Buy Now
 function buyNow(){
-  orderBox.innerHTML="<b>Lipstick</b><br>Status: Preparing<br>Delivery: Tomorrow";
-  alert("Order Placed Successfully!");
+  document.getElementById("orderBox").innerHTML =
+    "<b>Lipstick</b><br>Status: Preparing<br>Delivery: Tomorrow";
+  alert("🎉 Order Placed Successfully!");
   showPage("orders");
 }
 
-showPage("login");
+// Open Login page first
+window.onload = function(){
+  showPage("login");
+};
 </script>
-
 </body>
 </html>
