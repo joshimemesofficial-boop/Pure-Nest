@@ -1,109 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>PureNest Cosmetics</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PureNest Cosmetics</title>
 
-<style>
-body{
-  font-family:Arial;
-  margin:0;
-  background:#FFFDF4;
-}
+  <style>
+    body{margin:0;font-family:Arial;background:#FFFDF4;}
+    header{background:#FFD54F;padding:15px;}
+    .logo{font-size:28px;font-weight:bold;color:#1B5E20;}
+    .search{background:#fff;padding:10px;border-radius:20px;margin-top:10px;}
+    .banner{background:#1B5E20;color:#fff;text-align:center;padding:10px;font-weight:bold;}
 
-header{
-  background:#FFD54F;
-  color:#1B5E20;
-  text-align:center;
-  padding:15px;
-  font-size:24px;
-  font-weight:bold;
-}
+    .page{display:none;padding:15px;padding-bottom:80px;}
+    .card{background:#fff;padding:15px;border-radius:10px;margin:12px 0;border:1px solid #ddd;}
 
-.page{display:none;padding:15px;}
-#home{display:block;}
+    input{width:100%;padding:10px;margin:8px 0;box-sizing:border-box;}
 
-.card{
-  background:white;
-  padding:15px;
-  margin:15px 0;
-  border-radius:10px;
-  box-shadow:0 2px 5px gray;
-}
+    button{width:100%;padding:12px;border:none;border-radius:8px;margin-top:10px;color:white;font-size:16px;}
+    .wishbtn{background:#2E7D32;}
+    .cartbtn{background:#FF9800;}
+    .buy{background:#E53935;}
 
-button{
-  border:none;
-  border-radius:8px;
-  padding:10px;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.cartbtn{background:orange;width:100%;margin-top:10px;}
-.buy{background:red;width:100%;margin-top:10px;}
-
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  background:#1B5E20;
-  padding:10px;
-}
-
-footer button{
-  background:none;
-  color:white;
-}
-</style>
+    footer{position:fixed;bottom:0;left:0;right:0;background:#FFD54F;display:flex;justify-content:space-around;padding:10px;}
+    footer button{background:none;color:#1B5E20;width:auto;margin:0;font-size:14px;}
+  </style>
 </head>
-
 <body>
 
-<header>🌿 PureNest Cosmetics</header>
+<header>
+  <div class="logo">🌿 PureNest</div>
+  <div>📍 Delivery by Tomorrow</div>
+  <div class="search">🔍 Search skincare, makeup, haircare...</div>
+</header>
+
+<div class="banner">💚 PURE CHOICES • PURE YOU</div>
+
+<div id="login" class="page">
+  <div class="card">
+    <h2>Welcome to PureNest</h2>
+    <input id="loginName" placeholder="Full Name">
+    <input id="loginPhone" placeholder="Phone Number">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button class="wishbtn" onclick="loginUser()">Log In</button>
+    <button class="cartbtn" onclick="showPage('signup')">Create Account</button>
+  </div>
+</div>
+
+<div id="signup" class="page">
+  <div class="card">
+    <h2>Create Account</h2>
+    <input id="signupName" placeholder="Full Name">
+    <input id="signupPhone" placeholder="Phone Number">
+    <input id="signupAddress" placeholder="Address">
+    <input id="signupPassword" type="password" placeholder="Password">
+    <button class="wishbtn" onclick="createAccount()">Sign Up</button>
+    <button class="cartbtn" onclick="showPage('login')">Back to Login</button>
+  </div>
+</div>
 
 <div id="home" class="page">
-  <h2>Welcome to PureNest</h2>
-
+  <h2>Products</h2>
   <div class="card">
     <h3>Lipstick</h3>
     <p>Price: ₹299</p>
-
-    <button class="cartbtn">🛒 Add to Cart</button>
-    <button class="buy">🔴 Buy Now</button>
+    <button class="cartbtn" onclick="addCart()">🛒 Add to Cart</button>
+    <button class="buy" onclick="buyNow()">Buy Now</button>
   </div>
 </div>
 
 <div id="cart" class="page">
   <h2>🛒 My Cart</h2>
-  <div class="card">
-    Your cart items will appear here.
-  </div>
+  <div class="card" id="cartBox">Your cart is empty.</div>
 </div>
 
 <div id="wishlist" class="page">
   <h2>❤️ Wishlist</h2>
-  <div class="card">
-    No products added yet.
-  </div>
+  <div class="card">No products in wishlist.</div>
 </div>
 
 <div id="orders" class="page">
   <h2>📦 My Orders</h2>
-  <div class="card">
-    <p>Status: Preparing</p>
-    <p>Delivery: Tomorrow</p>
+  <div class="card" id="orderBox">
+    No orders yet.
   </div>
 </div>
 
 <div id="profile" class="page">
   <h2>👤 My Profile</h2>
-  <div class="card">
-    <p>Name: __________</p>
-    <p>Phone: __________</p>
-    <p>Address: __________</p>
-  </div>
+  <div class="card" id="profileBox"></div>
 </div>
 
 <footer>
@@ -115,29 +100,46 @@ footer button{
 </footer>
 
 <script>
+const pages=["login","signup","home","cart","wishlist","orders","profile"];
+
 function showPage(page){
-  let pages=["home","cart","wishlist","orders","profile"];
-
-  pages.forEach(function(p){
-    document.getElementById(p).style.display="none";
-  });
-
+  pages.forEach(p=>document.getElementById(p).style.display="none");
   document.getElementById(page).style.display="block";
 }
 
-document.querySelectorAll(".cartbtn").forEach(function(btn){
-  btn.onclick=function(){
-    alert("Product added to Cart!");
-    showPage("cart");
-  }
-});
+function createAccount(){
+  localStorage.setItem("name",signupName.value);
+  localStorage.setItem("phone",signupPhone.value);
+  localStorage.setItem("address",signupAddress.value);
+  localStorage.setItem("password",signupPassword.value);
+  alert("Account Created Successfully!");
+  showPage("login");
+}
 
-document.querySelectorAll(".buy").forEach(function(btn){
-  btn.onclick=function(){
-    alert("Order placed successfully!");
-    showPage("orders");
+function loginUser(){
+  if(loginName.value===localStorage.getItem("name") &&
+     loginPhone.value===localStorage.getItem("phone") &&
+     loginPassword.value===localStorage.getItem("password")){
+       profileBox.innerHTML=`<b>Name:</b> ${localStorage.getItem("name")}<br><b>Phone:</b> ${localStorage.getItem("phone")}<br><b>Address:</b> ${localStorage.getItem("address")}`;
+       alert("Login Successful!");
+       showPage("home");
+  }else{
+       alert("Wrong details. Sign up first.");
   }
-});
+}
+
+function addCart(){
+  cartBox.innerHTML="Lipstick - ₹299 added to cart.";
+  alert("Added to Cart!");
+}
+
+function buyNow(){
+  orderBox.innerHTML="<b>Lipstick</b><br>Status: Preparing<br>Delivery: Tomorrow";
+  alert("Order Placed Successfully!");
+  showPage("orders");
+}
+
+showPage("login");
 </script>
 
 </body>
