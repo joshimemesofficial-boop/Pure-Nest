@@ -1,182 +1,144 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>PureNest Cosmetics</title>  <style>  <button id="signupBtn" type="button">Sign Up</button>
-body{margin:0;font-family:Arial,sans-serif;background:#FFFDF4;color:#333;}  
-header{background:#FFD54F;padding:15px;position:sticky;top:0;}  
-.logo{font-size:28px;font-weight:bold;color:#1B5E20;}  
-.search{  
-  background:white;  
-  padding:10px;  
-  border-radius:25px;  
-  margin-top:10px;  
-}  
-.banner{  
-  background:#1B5E20;  
-  color:white;  
-  text-align:center;  
-  padding:12px;  
-  font-weight:bold;  
-}  
-  
-.page{display:none;padding:15px;}  
-#home{display:block;}  
-  
-.category{  
-  display:flex;  
-  overflow:auto;  
-  gap:10px;  
-  margin:15px 0;  
-}  
-.category div{  
-  background:#FFF8E1;  
-  padding:10px 15px;  
-  border-radius:15px;  
-  white-space:nowrap;  
-  font-weight:bold;  
-}  
-  
-.card{  
-  background:white;  
-  border-radius:12px;  
-  padding:15px;  
-  border:1px solid #ddd;  
-  margin-bottom:15px;  
-}  
-  
-.buy{  
-  background:#E53935;  
-  color:white;  
-}  
-.cartbtn{  
-  background:#FF9800;  
-  color:white;  
-}  
-.wishbtn{  
-  background:#2E7D32;  
-  color:white;  
-}  
-button{  
-  border:none;  
-  border-radius:8px;  
-  padding:12px;  
-  width:100%;  
-  margin-top:10px;  
-  font-size:16px;  
-}  
-  
-footer{  
-  position:fixed;  
-  bottom:0;  
-  left:0;  
-  right:0;  
-  background:#FFD54F;  
-  display:flex;  
-  justify-content:space-around;  
-  padding:10px;  
-}  
-footer button{  
-  background:none;  
-  width:auto;  
-  color:#1B5E20;  
-  margin:0;  
-  font-size:14px;  
-}  
-</style>  </head>  <body>  <header>  
-<div class="logo">🌿 PureNest</div>  
-<div>📍 Delivery by Tomorrow</div>  <div class="search">  
-🔍 Search skincare, makeup, haircare...  
-</div>  
-</header>  <div class="banner">  
-💚 PURE CHOICES • PURE YOU  
-</div>  
-  <!-- LOGIN PAGE -->
-<div id="login" class="page" style="display:block;">
+<!DOCTYPE html>
+<html>
+<head>
+<title>PureNest Cosmetics</title>
 
-<div class="card">
-<h2 style="color:#1B5E20;">🌿 Welcome to PureNest</h2>
+<style>
+body{
+  font-family:Arial;
+  margin:0;
+  background:#FFFDF4;
+}
 
-<input id="loginName" type="text" placeholder="Full Name" style="width:100%;padding:10px;margin:8px 0;">
-<input id="loginPhone" type="tel" placeholder="Phone Number" style="width:100%;padding:10px;margin:8px 0;">
-<input id="loginPassword" type="password" placeholder="Password" style="width:100%;padding:10px;margin:8px 0;">
+header{
+  background:#FFD54F;
+  color:#1B5E20;
+  text-align:center;
+  padding:15px;
+  font-size:24px;
+  font-weight:bold;
+}
 
-<button onclick="loginUser()" class="wishbtn">Log In</button>
+.page{display:none;padding:15px;}
+#home{display:block;}
 
-<p style="text-align:center;">Don't have an account?</p>
+.card{
+  background:white;
+  padding:15px;
+  margin:15px 0;
+  border-radius:10px;
+  box-shadow:0 2px 5px gray;
+}
 
-<button onclick="showPage('signup')" class="cartbtn">Create Account</button>
-</div>
+button{
+  border:none;
+  border-radius:8px;
+  padding:10px;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.cartbtn{background:orange;width:100%;margin-top:10px;}
+.buy{background:red;width:100%;margin-top:10px;}
+
+footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  background:#1B5E20;
+  padding:10px;
+}
+
+footer button{
+  background:none;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>🌿 PureNest Cosmetics</header>
+
+<div id="home" class="page">
+  <h2>Welcome to PureNest</h2>
+
+  <div class="card">
+    <h3>Lipstick</h3>
+    <p>Price: ₹299</p>
+
+    <button class="cartbtn">🛒 Add to Cart</button>
+    <button class="buy">🔴 Buy Now</button>
+  </div>
 </div>
 
-<!-- SIGN UP PAGE -->
-<div id="signup" class="page">
-
-<div class="card">
-<h2 style="color:#1B5E20;">Create Account</h2>
-
-<input id="signupName" type="text" placeholder="Full Name" style="width:100%;padding:10px;margin:8px 0;">
-<input id="signupPhone" type="tel" placeholder="Phone Number" style="width:100%;padding:10px;margin:8px 0;">
-<input id="signupAddress" type="text" placeholder="Address" style="width:100%;padding:10px;margin:8px 0;">
-<input id="signupPassword" type="password" placeholder="Password" style="width:100%;padding:10px;margin:8px 0;">
-
-<button onclick="createAccount()" class="wishbtn">Sign Up</button>
-<button onclick="showPage('login')" class="cartbtn">Back to Login</button>
-
+<div id="cart" class="page">
+  <h2>🛒 My Cart</h2>
+  <div class="card">
+    Your cart items will appear here.
+  </div>
 </div>
+
+<div id="wishlist" class="page">
+  <h2>❤️ Wishlist</h2>
+  <div class="card">
+    No products added yet.
+  </div>
 </div>
-  <!-- HOME -->  <div id="home" class="page">  <h2>💄 Shop by Category</h2>  <div class="category">  
-<div>Skincare</div>  
-<div>Makeup</div>  
-<div>Haircare</div>  
-<div>Perfume</div>  
-<div>Body Care</div>  
-<div>Beauty Tools</div>  
-</div>  <h2>Products</h2>  <div class="card">  
-<b>No products available yet.</b><br><br>  
-Products will be added by <b>PureNest Admin</b>.  
-</div>  </div>  <!-- PRODUCT PAGE -->  <div id="product" class="page">  <h2>💄 Product Details</h2>  <div class="card">  <img src="" width="100%" style="border-radius:10px;" alt="Product">  <h3>Product Name</h3>  <p>Product description and ingredients will appear here.</p>  <h3>⭐ Reviews</h3>  
-<p>No reviews yet.</p>  <h3>Related Items</h3>  <ul>  
-<li>Face Serum</li>  
-<li>Moisturizer</li>  
-<li>Lip Balm</li>  
-</ul>  <button class="wishbtn">❤️ Add to Wishlist</button>
 
-<button class="cartbtn">🛒 Add to Cart</button>
+<div id="orders" class="page">
+  <h2>📦 My Orders</h2>
+  <div class="card">
+    <p>Status: Preparing</p>
+    <p>Delivery: Tomorrow</p>
+  </div>
+</div>
 
-<button class="buy">🔴 Buy Now</button>
+<div id="profile" class="page">
+  <h2>👤 My Profile</h2>
+  <div class="card">
+    <p>Name: __________</p>
+    <p>Phone: __________</p>
+    <p>Address: __________</p>
+  </div>
+</div>
 
-</div>  </div>  <!-- CART -->  <div id="cart" class="page">  <h2>🛒 My Cart</h2>  <div class="card">  
-Your cart is empty.  
-</div>  <div class="card">  
-🎟 Coupon Code: <b>WELCOME10</b><br>  
-🎁 Get 10% OFF on orders above ₹500.  
-</div>  <button class="buy">Proceed to Checkout</button>
+<footer>
+  <button onclick="showPage('home')">🏠 Home</button>
+  <button onclick="showPage('orders')">📦 Orders</button>
+  <button onclick="showPage('wishlist')">❤️ Wishlist</button>
+  <button onclick="showPage('cart')">🛒 Cart</button>
+  <button onclick="showPage('profile')">👤 Profile</button>
+</footer>
 
-</div>  <!-- WISHLIST -->  <div id="wishlist" class="page">  <h2>❤️ Wishlist</h2>  <div class="card">  
-No products added to wishlist yet.  
-</div>  </div>  <!-- ORDERS -->  <div id="orders" class="page">  <h2>📦 My Orders</h2>  <div class="card">  <p><b>Status:</b> Preparing</p>  <p><b>Delivery:</b> Tomorrow</p>  <p><b>Payment Options:</b></p>  <ul>  
-<li>PhonePe</li>  
-<li>Google Pay</li>  
-<li>Paytm</li>  
-<li>Cash on Delivery</li>  
-</ul>  <p><b>Delivery Instructions:</b></p>  <p>Leave at door / Call me.</p>  </div>  </div>  <!-- PROFILE -->  <div id="profile" class="page">  <h2>👤 My Profile</h2>  <div class="card">  <p><b>Name:</b> ____________</p>  <p><b>Phone:</b> ____________</p>  <p><b>Address:</b> ____________</p>  <p><b>Notifications:</b> ON</p>  </div>  </div>  <footer>  <button onclick="showPage('home')">🏠 Home</button>
+<script>
+function showPage(page){
+  let pages=["home","cart","wishlist","orders","profile"];
 
-<button onclick="showPage('orders')">📦 Orders</button>
+  pages.forEach(function(p){
+    document.getElementById(p).style.display="none";
+  });
 
-<button onclick="showPage('wishlist')">❤️ Wishlist</button>
+  document.getElementById(page).style.display="block";
+}
 
-<button onclick="showPage('cart')">🛒 Cart</button>
+document.querySelectorAll(".cartbtn").forEach(function(btn){
+  btn.onclick=function(){
+    alert("Product added to Cart!");
+    showPage("cart");
+  }
+});
 
-<button onclick="showPage('profile')">👤 Profile</button>
+document.querySelectorAll(".buy").forEach(function(btn){
+  btn.onclick=function(){
+    alert("Order placed successfully!");
+    showPage("orders");
+  }
+});
+</script>
 
-</footer>  <script>  
-function showPage(page){  
-  let pages=["home","product","cart","wishlist","orders","profile"];  
-  pages.forEach(function(p){  
-    document.getElementById(p).style.display="none";  
-  });  
-  document.getElementById(page).style.display="block";  
-}  
-</script>  </body>  
+</body>
 </html>
