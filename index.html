@@ -31,12 +31,16 @@
 <header>
   <div class="logo">🌿 PureNest</div>
   <div>📍 Delivery by Tomorrow</div>
-  <div class="search">🔍 Search skincare, makeup, haircare...</div>
+  .</div>
 </header>
 
 <div class="banner">💚 PURE CHOICES • PURE YOU</div>
-
-<div id="login" class="page">
+<div class="search">
+  <input type="text" id="searchInput"
+         placeholder="🔍 Search skincare, makeup, haircare..."
+         onkeyup="searchProducts()"
+         style="width:100%;border:none;outline:none;font-size:16px;">
+</dwindowiv id="login" class="page">
   <div class="card">
     <h2>Welcome to PureNest</h2>
     <input id="loginName" placeholder="Full Name">
@@ -173,8 +177,16 @@ function buyNow(){
   alert("🎉 Order Placed Successfully!");
   showPage("orders");
 }
+n Login page first
+  function searchProducts() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.querySelectorAll("#home .card");
 
-// Open Login page first
+  cards.forEach(function(card) {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? "block" : "none";
+  });
+  }
 window.onload = function(){
   showPage("login");
 };
