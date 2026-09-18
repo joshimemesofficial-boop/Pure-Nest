@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PureNest Cosmetics</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Arial,sans-serif;
+  background:#FFFDF4;
+}
+
+header{
+  background:#FFD54F;
+  padding:15px;
+  position:sticky;
+  top:0;
+}
+
+.logo{
+  font-size:28px;
+  color:#1B5E20;
+  font-weight:bold;
+}
+
+.search{
+  background:white;
+  padding:10px;
+  border-radius:20px;
+  margin-top:10px;
+}
+
+.search input{
+  width:100%;
+  border:none;
+  outline:none;
+  font-size:16px;
+}
+
+.banner{
+  background:#1B5E20;
+  color:white;
+  text-align:center;
+  padding:10px;
+  font-weight:bold;
+}
+
+.page{
+  display:none;
+  padding:15px;
+  padding-bottom:90px;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  margin-top:15px;
+  border-radius:12px;
+  border:1px solid #ddd;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+  color:white;
+  font-size:16px;
+}
+
+.green{background:#1B5E20;}
+.orange{background:#FF9800;}
+.red{background:#E53935;}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#FFD54F;
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
+}
+
+footer button{
+  background:none;
+  color:#1B5E20;
+  width:auto;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🌿 PureNest</div>
+<div>📍 Delivery by Tomorrow</div>
+
+<div class="search">
+<input type="text" id="searchInput"
+placeholder="🔍 Search skincare, makeup, haircare...">
+</div>
+</header>
+
+<div class="banner">
+💚 PURE CHOICES • PURE YOU
+</div>
+
+<!-- LOGIN PAGE -->
+<div id="login" class="page">
+<div class="card">
+<h2>Welcome to PureNest</h2>
+
+<input id="loginName" placeholder="Full Name">
+<input id="loginPhone" placeholder="Phone Number">
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button class="green" onclick="loginUser()">Log In</button>
+
+<p style="text-align:center;margin-top:10px;">
+Don't have an account?
+</p>
+
+<button class="orange" onclick="showPage('signup')">
+Create Account
+</button>
+</div>
+</div>
+
+<!-- SIGN UP PAGE -->
+<div id="signup" class="page">
+<div class="card">
+<h2>Create Account</h2>
+
+<input id="signupName" placeholder="Full Name">
+<input id="signupPhone" placeholder="Phone Number">
+<input id="signupAddress" placeholder="Address">
+<input id="signupPassword" type="password" placeholder="Password">
+
+<button class="green" onclick="createAccount()">Sign Up</button>
+
+<button class="orange" onclick="showPage('login')">
+Back to Login
+</button>
+</div>
+</div>
+  <!-- HOME PAGE -->
+<div id="home" class="page">
+
+<h2>💄 Shop by Category</h2>
+
+<h2>Popular Products</h2>
+
+<div class="card">
+  <img id="productImage" src="" style="width:100%;border-radius:10px;">
+  <h3 id="productName">Lipstick</h3>
+  <p id="productPrice">₹157</p>
+  <p id="productDesc">
+    Long-lasting matte lipstick. Waterproof and lightweight.
+  </p>
+
+  <button class="orange" onclick="addCart()">🛒 Add to Cart</button>
+  <button class="red" onclick="buyNow(157)">Buy Now</button>
+</div>
+
+</div>
+
+<!-- CART -->
+<div id="cart" class="page">
+<h2>🛒 My Cart</h2>
+
+<div class="card" id="cartBox">
+Your cart is empty.
+</div>
+
+<div class="card">
+🎟 Coupon: <b>WELCOME10</b><br>
+10% OFF on orders above ₹500.
+</div>
+
+<button class="green" onclick="showPage('payment')">
+Proceed to Checkout
+</button>
+</div>
+
+<!-- PAYMENT -->
+<div id="payment" class="page">
+<h2>💳 Choose Payment Method</h2>
+
+<div class="card"><input type="radio" name="pay"> PhonePe</div>
+<div class="card"><input type="radio" name="pay"> Google Pay</div>
+<div class="card"><input type="radio" name="pay"> Paytm</div>
+<div class="card"><input type="radio" name="pay"> Credit / Debit Card</div>
+<div class="card"><input type="radio" name="pay"> Cash on Delivery</div>
+
+<button class="green" onclick="confirmPayment()">
+Confirm Payment
+</button>
+</div>
+
+<!-- WISHLIST -->
+<div id="wishlist" class="page">
+<h2>❤️ Wishlist</h2>
+
+<div class="card" id="wishBox">
+No items in wishlist.
+</div>
+</div>
+
+<!-- ORDERS -->
+<div id="orders" class="page">
+<h2>📦 My Orders</h2>
+
+<div class="card" id="orderBox">
+No orders yet.
+</div>
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="page">
+
+<div class="card" style="background:#1B5E20;color:white;text-align:center;">
+  <img src="user.png" width="80" height="80"
+       style="border-radius:50%;background:white;">
+  <h2 id="profileName"></h2>
+  <p id="profilePhone"></p>
+</div>
+
+<div class="card">📍 Address Book</div>
+<div class="card">📦 Your Orders</div>
+<div class="card">❤️ Wishlist</div>
+<div class="card">💳 Payment & Coupons</div>
+<div class="card">🎁 Rewards</div>
+<div class="card">⚙️ Notification Preferences</div>
+
+<button class="red" onclick="logoutUser()">Log Out</button>
+
+</div>
+
+<!-- BOTTOM MENU -->
+<footer>
+<button onclick="showPage('home')">🏠 Home</button>
+<button onclick="showPage('orders')">📦 Orders</button>
+<button onclick="showPage('wishlist')">❤️ Wishlist</button>
+<button onclick="showPage('cart')">🛒 Cart</button>
+<button onclick="showPage('profile')">👤 Profile</button>
+</footer>
+
